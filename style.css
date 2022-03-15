@@ -1,0 +1,722 @@
+/* We declare root variables for colors we might use again and again */
+:root {
+  --white: #fff;
+  --black: #141415;
+  --light: #f4f4f4;
+  --dark: #525252;
+  --primary: #f24e1e;
+  --primary-light: hsl(14, 89%, 53%, 12%);
+  --success: #29f5a6;
+  --warning: #ffce31;
+
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--primary-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth; /* When the page guides us after clicking on links in navbar it scrolls smoothly */
+}
+
+body {
+  background-color: var(--white);
+  color: var(--dark);
+  font-family: "Montserrat", sans-serif;
+  max-width: 100vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--black);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.8rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 0.86rem;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto; /* This horizontally centers every container */
+}
+
+section {
+  padding: 10rem 0 7rem; /* top  left,right  bottom */
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+section h1 {
+  text-align: center;
+  display: block; /* A block has some whitespace above and below it and tolerates no HTML elements next to it, except when ordered otherwise */
+  margin-bottom: 5rem;
+}
+
+img {
+  width: 100%;
+}
+
+.btn {
+  padding: 1.4rem 3.4rem; /* Top,Bottom  Left,Right */
+  font-size: 1.1rem;
+  color: var(--black);
+  background: var(--white);
+  display: inline-block; /* allows to set a width and height on the element */
+  margin: 2rem 0;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  box-shadow: 0 2rem 2rem var(--primary-light);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* ----------------------->    NAVBAR  <----------------------- */
+
+nav {
+  width: 100%;
+  height: 5rem;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  border-bottom: 1px solid var(--light);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+nav button {
+  display: none;
+}
+
+nav h3 {
+  color: var(--primary);
+}
+
+nav .container ul {
+  display: flex;
+  height: 100%;
+}
+
+nav .container ul li a {
+  height: 100%;
+  color: var(--black);
+  width: 7rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+}
+
+nav .container ul li a:hover {
+  color: var(--primary);
+}
+
+nav .container ul li a.active {
+  /* You cannot have space between a and .active bcoz active is class of a not inside a */
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* ---------------->  Landing Starts  <---------------- */
+
+section.landing {
+  display: grid; /* grid layout enables an author to align elements into columns and rows */
+  place-items: center; /* The direct child(container) gets placed in center */
+  position: relative;
+  top: 5rem;
+  padding-bottom: 14rem;
+}
+
+section.landing .container {
+  display: grid;
+  grid-template-columns: 5rem auto 26rem; /* three childs - socials  info  profile */
+  gap: 2rem;
+}
+
+section.landing .container .socials {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 5rem;
+}
+
+section.landing .container .socials a {
+  font-size: 1.1rem;
+  color: var(--dark);
+  background: var(--light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  padding: 0.3rem;
+  transition: var(--transition);
+}
+
+section.landing .container .socials a:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+section.landing .container .info h1 {
+  text-align: left;
+  margin: 0;
+}
+
+section.landing .container .info h3 {
+  margin: 2.4rem 0 1rem;
+}
+
+section.landing .container .info p {
+  width: 35rem;
+}
+
+section.landing .container .profile-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.landing .container .profile-area .outer-circle {
+  width: 26rem;
+  height: 26rem;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  position: relative;
+  animation: move 30s linear infinite;
+}
+
+@keyframes move {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+section.landing .container .profile-area .outer-circle span {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  position: absolute;
+  background: var(--white);
+  color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 1rem var(--primary-light);
+}
+
+section.landing .container .profile-area .outer-circle span:nth-child(1) {
+  /*  Pseudo Selector  */
+  left: calc(50% - 2rem); /* Subtracting half of width  */
+  top: -2rem;
+}
+
+section.landing .container .profile-area .outer-circle span:nth-child(2) {
+  left: calc(50% - 2rem);
+  bottom: -2rem;
+}
+
+section.landing .container .profile-area .outer-circle span:nth-child(3) {
+  right: -2rem;
+  top: calc(50% - 2rem);
+}
+
+section.landing .container .profile-area .outer-circle span:nth-child(4) {
+  left: -2rem;
+  top: calc(50% - 2rem);
+}
+
+section.landing .container .profile-area .inner-circle {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* ----------------->   ABOUT SECTION   <----------------- */
+
+section.about {
+  background: var(--light);
+}
+
+section.about .container {
+  display: grid;
+  grid-template-columns: 26rem auto;
+  gap: 5rem;
+}
+
+section.about .container p {
+  margin-bottom: 1rem;
+}
+
+section.about .container .read-more-content {
+  display: none;
+}
+
+section.about .container .read-more {
+  display: block;
+  color: var(--primary);
+  margin: 1rem 0 2rem;
+  cursor: pointer;
+  width: max-content;
+}
+
+section.about .container .read-more:hover {
+  text-decoration: underline;
+}
+
+/* ------------------->   Skills Section    <------------------- */
+
+section.skills .container {
+  width: 50%;
+}
+
+section.skills .skill {
+  margin-bottom: 1rem;
+}
+
+section.skills .skill .head {
+  background: var(--primary);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+  cursor: pointer;
+}
+
+section.skills .skill .head h4 {
+  color: var(--white);
+}
+
+section.skills .skill .left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+section.skills .skill .items.hide-items {
+  display: none;
+}
+
+section.skills .skill .items {
+  display: block;
+}
+
+section.skills .skill .item {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background: var(--light);
+  margin-bottom: 0.3rem;
+  padding: 1.6rem;
+  gap: 1rem;
+  transition: var(--transition);
+}
+
+section.skills .skill .item:hover {
+  background: var(--white);
+}
+
+section.skills .skill .item .progress-area {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+section.skills .skill .item .progress-area .progress-bar {
+  width: 100%;
+  height: 1rem;
+  background: var(--primary-light);
+}
+
+section.skills .skill .item .progress-area .progress-bar .progress {
+  height: 100%;
+  width: 88%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill
+  .item:nth-child(2)
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 75%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill
+  .item:nth-child(3)
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 50%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill:nth-child(2)
+  .item
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 94%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill:nth-child(2)
+  .item:nth-child(2)
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 78%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill:nth-child(2)
+  .item:nth-child(3)
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 89%;
+  background: var(--primary);
+}
+
+/* section.skills
+  .skill:nth-child(3)
+  .item
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 100%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill:nth-child(3)
+  .item:nth-child(2)
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 100%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill:nth-child(3)
+  .item:nth-child(3)
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 100%;
+  background: var(--primary);
+}
+
+section.skills
+  .skill:nth-child(3)
+  .item:nth-child(4)
+  .progress-area
+  .progress-bar
+  .progress {
+  height: 100%;
+  width: 110%;
+  background: var(--primary);
+} */
+
+section.contact {
+  background: url(mine/string-phone2.jpg) no-repeat center center/cover; /* What? */
+  padding: 0;
+  max-width: 100vw;
+}
+
+section.contact .overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10rem 0 7rem;
+}
+
+section.contact .container {
+  width: 40%;
+}
+
+section.contact .container h1 {
+  color: var(--white);
+  margin: 0;
+}
+
+section.contact form input,
+section.contact form textarea {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1.6rem;
+  border: 1px solid var(--white);
+  background: transparent;
+  color: var(--white);
+}
+
+section.contact form textarea {
+  height: 10rem;
+}
+
+section.contact form input:focus,
+section.contact form textarea:focus {
+  background: var(--white);
+  color: var(--black);
+}
+
+section.contact
+  form
+  input::placeholder
+  section.contact
+  form
+  textarea::placeholder {
+  color: var(--white);
+}
+
+section.contact form .btn {
+  width: 14rem;
+  border: none;
+  background: var(--white);
+  color: var(--black);
+  margin: 2rem auto 0;
+}
+
+section.contact form .btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.68rem;
+  }
+
+  /* -------------------->    NAVBAR    <---------------------- */
+
+  nav h3 {
+    margin-left: 1rem;
+  }
+
+  nav .container {
+    width: 100%;
+  }
+
+  nav ul {
+    display: none; /* Why is this not working */
+    position: fixed;
+    top: 0;
+    flex-direction: column;
+    width: 16rem;
+    height: 100vw;
+    box-shadow: 1rem 0 2rem var(--primary-light);
+    z-index: 3;
+    background: var(--white);
+  }
+
+  nav ul li {
+    height: 1.6rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  nav ul li a {
+    width: 100%;
+    justify-content: start;
+    padding-left: 2rem;
+  }
+
+  nav ul li a:hover {
+    padding-left: 3rem;
+  }
+
+  nav button {
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    color: var(--black);
+    margin: 1rem;
+  }
+
+  nav button#close-btn {
+    display: none;
+  }
+
+  /*  */
+
+  section.landing {
+    margin-top: -4rem;
+    padding-bottom: 7rem;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  section.landing .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 50%;
+    text-align: center;
+    row-gap: 6rem;
+  }
+
+  section.landing .container .socials {
+    display: none;
+  }
+
+  section.landing .container .info {
+    width: 90%;
+    margin: 0 auto;
+  }
+  section.landing .container .info h1 {
+    text-align: center;
+  }
+  section.landing .container .info p {
+    margin: 0 auto;
+    width: 92%;
+  }
+  section.landing .container .profile-area {
+    grid-row: 1;
+    width: 94%;
+    margin: 0 auto;
+  }
+  section.landing .container .outer-circle {
+    height: 16rem;
+    width: 16rem;
+  }
+  section.landing .container .inner-circle {
+    height: 10rem;
+    width: 10rem;
+  }
+  section.landing .container .outer-circle span {
+    height: 3rem;
+    width: 3rem;
+  }
+  section.landing .container .profile-area .outer-circle span:nth-child(1) {
+    /*  Pseudo Selector  */
+    left: calc(50% - 1.5rem); /* Subtracting half of width  */
+    top: -1.5rem;
+  }
+
+  section.landing .container .profile-area .outer-circle span:nth-child(2) {
+    left: calc(50% - 1.5rem);
+    bottom: -1.5rem;
+  }
+
+  section.landing .container .profile-area .outer-circle span:nth-child(3) {
+    right: -1.5rem;
+    top: calc(50% - 1.5rem);
+  }
+
+  section.landing .container .profile-area .outer-circle span:nth-child(4) {
+    left: -1.5rem;
+    top: calc(50% - 1.5rem);
+  }
+
+  /*  */
+
+  section.about .container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  /*  */
+
+  section.skills .container {
+    width: 94%;
+  }
+
+  /*  */
+
+  section.contact .container {
+    width: 94vw;
+  }
+}
