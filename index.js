@@ -33,12 +33,15 @@ navItems.forEach((item) => {
   });
 });
 
-const skillItems = document.querySelector("section.skills .skill");
+const skillItems = document.querySelectorAll("section.skills .skill");
 
 skillItems.forEach((skill) => {
   const head = skill.querySelector(".head");
+  console.log("head done");
   const items = skill.querySelector(".items");
+  console.log("items done");
   head.addEventListener("click", () => {
     items.classList.toggle("hide-items");
+    console.log("toggllee");
   });
 });
